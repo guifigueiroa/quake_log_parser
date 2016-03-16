@@ -15,15 +15,21 @@ class Game
     @players << player unless @players.include? player
   end
   
-  def add_kill(player, mean)
+  def add_kill(killer, killed, mean)
     @total_kills += 1
     
     # initialize hashes
-    @kills[player.to_sym] ||= 0
+    @kills[killer.to_sym] ||= 0 unless killer == "<world>"
+    @kills[killed.to_sym] ||= 0
     @kill_by_means[mean.to_sym] ||= 0
     
     # increments hashes
-    @kills[player.to_sym] += 1
+    if killer == "<world>"
+      @kills[killed.to_sym] -= 1
+    else
+      @kills[killer.to_sym] += 1
+    end
+    
     @kill_by_means[mean.to_sym] += 1
   end
 end

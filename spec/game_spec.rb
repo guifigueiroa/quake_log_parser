@@ -19,9 +19,9 @@ describe Game do
     end
   end
   
-  describe "add_kill" do
+  describe "#add_kill" do
     before :each do
-      game.add_kill "Guilherme", "MOD_ROCKET_SPLASH"
+      game.add_kill "Guilherme", "player1", "MOD_ROCKET_SPLASH"
     end
     
     it "counts total_kills" do
@@ -30,14 +30,19 @@ describe Game do
     
     it "counts player kills" do
       expect(game.kills["Guilherme".to_sym]).to eq 1
-      game.add_kill "Guilherme", "MOD_ROCKET_SPLASH"
+      game.add_kill "Guilherme", "player1", "MOD_ROCKET_SPLASH"
       expect(game.kills["Guilherme".to_sym]).to eq 2
     end
     
     it "counts kill by means" do
       expect(game.kill_by_means["MOD_ROCKET_SPLASH".to_sym]).to eq 1
-      game.add_kill "Guilherme", "MOD_ROCKET_SPLASH"
+      game.add_kill "Guilherme", "player1", "MOD_ROCKET_SPLASH"
       expect(game.kill_by_means["MOD_ROCKET_SPLASH".to_sym]).to eq 2
+    end
+    
+    it "decrements kills when killed by <world>" do
+      game.add_kill "<world>", "player1", "MOD_FALLING"
+      expect(game.kills[:player1]).to eq -1
     end
   end
 end
