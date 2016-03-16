@@ -21,7 +21,7 @@ module QuakeLogParser
       end
       
       # game shutdown pattern
-      games << game if QuakeLogRegex.shutdown_game? line
+      games << game if QuakeLogRegex.shutdown_game?(line) && !game.nil?
     end
     
     games

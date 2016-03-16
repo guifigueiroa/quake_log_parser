@@ -32,4 +32,22 @@ class Game
     
     @kill_by_means[mean.to_sym] += 1
   end
+  
+  def to_hash
+    hash = Hash.new
+    hash[:"#{@name}"] = {
+      total_kills: @total_kills,
+      players: @players,
+      kills: @kills
+      }
+    hash
+  end
+  
+  def kill_by_means_hash
+    hash = Hash.new
+    hash[:"#{@name}"] = {
+      kill_by_means: @kill_by_means.sort_by{|_key, value| value}.reverse.to_h
+      }
+    hash
+  end
 end
