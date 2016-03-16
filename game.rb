@@ -16,5 +16,14 @@ class Game
   end
   
   def add_kill(player, mean)
+    @total_kills += 1
+    
+    # initialize hashes
+    @kills[player.to_sym] ||= 0
+    @kill_by_means[mean.to_sym] ||= 0
+    
+    # increments hashes
+    @kills[player.to_sym] += 1
+    @kill_by_means[mean.to_sym] += 1
   end
 end
