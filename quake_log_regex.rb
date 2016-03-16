@@ -1,6 +1,6 @@
 module QuakeLogRegex
 
-  INFO_CHANGED_REGEX = /[0-9]{1,2}:[0-9]{2} ClientUserinfoChanged: (\d+) n\\(\w+).*/
+  INFO_CHANGED_REGEX = /[0-9]{1,2}:[0-9]{2} ClientUserinfoChanged: (\d+) n\\(<?[\w|\s]+>?).*/
   INITGAME_REGEX = /[0-9]{1,2}:[0-9]{2} InitGame:.*$/
   KILL_REGEX = /[0-9]{1,2}:[0-9]{2} Kill: (\d+) (\d+) (\d+): (<?[\w|\s]+>?) killed ([\w|\s]+) by ([A-Z|_]*)$/
   #SHUTDOWNGAME_REGEX = /[0-9]{1,2}:[0-9]{2} ShutdownGame:$/

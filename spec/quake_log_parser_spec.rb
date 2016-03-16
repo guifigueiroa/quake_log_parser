@@ -33,7 +33,7 @@ describe QuakeLogRegex do
       expect(game.kills).to include :"Assasinu Credi" => 1
       expect(game.kills).to include Zeh: 1
       expect(game.kills).not_to include :"<world>"
-      expect(game.players).to eq ["Dono", "Isgalamido", "Zeh", "Assasinu"]
+      expect(game.players).to eq ["Dono da Bola", "Isgalamido", "Zeh", "Assasinu Credi"]
       expect(game.kill_by_means).to include MOD_TRIGGER_HURT: 5
       expect(game.kill_by_means).to include MOD_RAILGUN: 1
       expect(game.kill_by_means).to include MOD_ROCKET_SPLASH: 3
