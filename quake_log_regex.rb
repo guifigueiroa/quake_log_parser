@@ -1,11 +1,14 @@
 module QuakeLogRegex
 
-  def self.init_game?(line)
+  INITGAME_REGEX = /[0-9]{1,2}:[0-9]{2} InitGame:.*$/
+  SHUTDOWNGAME_REGEX = /[0-9]{1,2}:[0-9]{2} ShutdownGame:$/
 
+  def self.init_game?(line)
+    line =~ INITGAME_REGEX
   end
   
   def self.shutdown_game?(line)
-
+    line =~ SHUTDOWNGAME_REGEX
   end
   
   def self.kill?(line)
