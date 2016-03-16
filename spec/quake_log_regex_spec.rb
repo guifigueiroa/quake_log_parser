@@ -13,6 +13,7 @@ describe QuakeLogRegex do
           "1:08 Kill: 3 2 6: Isgalamido killed Mocinha by MOD_ROCKET",
           "1:26 Kill: 1022 4 22: <world> killed Zeh by MOD_TRIGGER_HURT",
           "1:47 ShutdownGame:",
+          "1:47 ------------------------------------------------------------"
          ]
     end
   
