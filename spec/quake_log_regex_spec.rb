@@ -21,9 +21,41 @@ describe QuakeLogRegex do
       expect(QuakeLogRegex.init_game?(log.first)).to eq 0
     end
   end
+  
   describe "#shutdown_game" do
     it "matches end game pattern" do
       expect(QuakeLogRegex.shutdown_game?(log.last)).to eq 0
+    end
+  end
+  
+  describe "#kill" do
+    it "matches kill pattern" do
+      expect(QuakeLogRegex.kill?(log[7])).to eq 0
+    end
+    it "gets kill details" do
+      kill = QuakeLogRegex.kill_details log[7]
+      expect(kill[:killer]).to eq "Isgalamido"
+      expect(kill[:killed]).to eq "Mocinha"
+      expect(kill[:by]).to eq "MOD_ROCKET"
+    end
+    it "matches world kill pattern" do
+      expect(QuakeLogRegex.kill?(log[8])).to eq 0
+    end
+    it "gets world kill details" do
+      kill = QuakeLogRegex.kill_details log[8]
+      expect(kill[:killer]).to eq "<world>"
+      expect(kill[:killed]).to eq "Zeh"
+      expect(kill[:by]).to eq "MOD_TRIGGER_HURT"
+    end
+  end
+  
+  describe "#player_connected" do
+    it "matches player connected pattern" do
+      expect(QuakeLogRegex.player_connected?(log[2])).to eq 0
+    end
+    it "gets player connected details" do
+      player = QuakeLogRegex.player_connected_details log[2]
+      expect(player).to eq "Mocinha"
     end
   end
 end
