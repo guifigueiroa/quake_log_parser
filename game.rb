@@ -50,4 +50,34 @@ class Game
       }
     hash
   end
+  
+  def kills_report
+    report = "*"*10+"\n"
+    report += "#{@name}: {\n"
+    report += "\ttotal_kills: #{@total_kills},\n"
+    report += "\tplayers: #{@players},\n" 
+    report += "\tkills: {\n" 
+    
+    @kills.each do |key, value|
+      report +="\t\t\"#{key}\": #{value},\n"
+    end
+    
+    report += "\t}\n}\n"
+    report += "*"*10+"\n"
+    report
+  end
+  
+  def kill_by_means_report
+    report = "*"*10+"\n"
+    report += "#{@name}: {\n"
+    report += "\tkill_by_means: {\n" 
+    
+    @kill_by_means.each do |key, value|
+      report +="\t\t\"#{key}\": #{value},\n"
+    end
+    
+    report += "\t}\n}\n"
+    report += "*"*10+"\n"
+    report
+  end
 end

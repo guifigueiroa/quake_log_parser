@@ -45,4 +45,16 @@ describe Game do
       expect(game.kills[:player1]).to eq -1
     end
   end
+  
+  describe "#kills_report" do
+    it "generates report" do
+      expect(game.kills_report).to eq "**********\n#{game.name}: {\n\ttotal_kills: 0,\n\tplayers: [],\n\tkills: {\n\t}\n}\n**********\n"
+    end
+  end
+  
+  describe "#kill_by_means_report" do
+    it "generates report" do
+      expect(game.kill_by_means_report).to eq "**********\n#{game.name}: {\n\tkill_by_means: {\n\t}\n}\n**********\n"
+    end
+  end
 end
