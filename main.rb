@@ -1,6 +1,7 @@
 require_relative 'quake_log_regex'
 require_relative 'quake_log_parser'
 require_relative 'game'
+require 'pp'
 
 log = File.readlines("games.log")
 games = QuakeLogParser.parse_game log
@@ -26,9 +27,11 @@ while(true) do
   option = gets.to_i
 
   if option == 1
-    puts game.kills_report
+    #puts game.kills_report
+    pp game.to_hash
   elsif option == 2
-    puts game.kill_by_means_report
+    #puts game.kill_by_means_report
+    pp game.kill_by_means_hash
   else
     puts "Invalid option"
   end
