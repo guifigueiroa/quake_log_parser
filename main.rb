@@ -13,7 +13,6 @@ while(true) do
 
   option = gets.to_i
 
-  abort if option == -1
   if option < 1 || option > games.count
     abort
   end
